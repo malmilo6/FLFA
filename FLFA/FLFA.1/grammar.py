@@ -16,6 +16,12 @@ class Grammar:
         word: str = ''
         possible_transitions: list = []
 
+        # for production in self._p:
+        #     if symbol in production[0]:
+        #         random_production = random.randint(1, len(production) - 1)
+        #         word += production[random_production]
+        # return word
+
         # There are many possibilities of transactions with the same first symbol,
         # I decided to group them together and choose one randomly
         for transition in self._p:
@@ -45,4 +51,5 @@ class Grammar:
 
     # Call the constructor for FA and pass the grammar
     def to_finite_automaton(self) -> FiniteAutomaton:
+
         return FiniteAutomaton(self._p, self._s, self._f)

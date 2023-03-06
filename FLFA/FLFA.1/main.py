@@ -4,7 +4,7 @@ from grammar import Grammar
 def main():
     VN = ['S', 'I', 'J', 'K']
     VT = ['a', 'b', 'c', 'e', 'n', 'f', 'm']
-    Transitions = [
+    Productions = [
         ['S', 'c', 'I'],
         ['I', 'b', 'J'],
         ['I', 'f', 'I'],
@@ -15,10 +15,11 @@ def main():
         ['I', 'e'],
         ['K', 'm']
     ]
+
     S = 'S'
     F = ['e', 'm']
 
-    grammar = Grammar(VN, VT, Transitions, S, F)
+    grammar = Grammar(VN, VT, Productions, S, F)
     finite_automaton = grammar.to_finite_automaton()
     string_list: list[str] = []
 
@@ -30,6 +31,5 @@ def main():
             print('The word belongs to language')
         else:
             print('-')
-
 
 main()

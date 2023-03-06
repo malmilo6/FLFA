@@ -2,7 +2,7 @@
 class FiniteAutomaton:
 
     def __init__(self, p, s, f):
-        self._p = p
+        self._t = p
         self._s = s
         self._f = f
 
@@ -13,7 +13,7 @@ class FiniteAutomaton:
 
         for character in word:
             next_state = 'empaty'
-            for transition in self._p:
+            for transition in self._t:
                 # Check if it's matching the needed transition
                 if transition[0] == current_state and transition[1] == character:
                     next_state = transition[len(transition)-1]

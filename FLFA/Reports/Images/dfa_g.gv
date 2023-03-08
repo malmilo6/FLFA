@@ -1,0 +1,13 @@
+digraph DFA {
+	node [shape=circle]
+	edge [arrowhead=normal]
+	"{'q0'}" -> "{'q1'}" [label=a]
+	"{'q1'}" -> "{'q2', 'q1'}" [label=b]
+	"{'q2', 'q1'}" -> "{'q4'}" [label=a]
+	"{'q2', 'q1'}" -> "{'q3', 'q2', 'q1'}" [label=b]
+	"{'q3', 'q2', 'q1'}" -> "{'q4', 'q1'}" [label=a]
+	"{'q3', 'q2', 'q1'}" -> "{'q3', 'q2', 'q1'}" [label=b]
+	"{'q4', 'q1'}" -> "{'q2', 'q1'}" [label=b]
+	"{'q4', 'q1'}" [shape=doublecircle]
+	"{'q4'}" [shape=doublecircle]
+}

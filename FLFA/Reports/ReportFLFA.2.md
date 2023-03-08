@@ -200,11 +200,11 @@ Graphviz is an open-source software tool for creating and manipulating graphs an
 </p>
 <p> NFA from given variant:</p>
 
-![NFA](/Images/nfa_g.gv.png)
+![NFA](Images/nfa_g.gv.png)
 
 <p>Obtained DFA:</p>
 
-![DFA](/Images/dfa_g.gv.png)
+![DFA](Images/dfa_g.gv.png)
 
 
 ----

@@ -4,7 +4,6 @@ from finite_automaton import FiniteAutomaton
 from grammar import GrammarC
 
 
-
 def main():
     VN = ['S', 'I', 'J', 'K']
     VT = ['a', 'b', 'c', 'e', 'n', 'f', 'm']
@@ -65,26 +64,21 @@ def main():
     #     else:
     #         print('-')
 
-    # states = FAD.get_states()
-    # transitions = FAD.get_trasnitions()
-    # final_states = FAD.get_final_states()
-    # start = 'q0'
-    #
-    # dot = graphviz.Digraph('DFA', filename='Reports/Images/dfa_g.gv')
-    # for state in states:
-    #     dot.node(str(state))
-    #
-    # dot.attr('node', shape='none')
-    # dot.edge('', str(start), arrowhead='normal')
-    #
-    # dot.attr('node', shape='doublecircle')
-    # for final in final_states:
-    #     dot.node(str(final), shape='doublecircle')
-    #
-    # dot.attr('node', shape='circle')
-    # dot.attr('edge', arrowhead='normal')
-    # for (state, symbol, next_state) in transitions:
-    #     dot.edge(str(state), str(next_state), label=symbol)
-    # dot.view()
+    # Graphic representation of FA (NFA or DFA)
+    states = FA.get_states()
+    transitions = FA.get_trasnitions()
+    final_states = FA.get_final_states()
+    start = 'q0'
+
+    graph = graphviz.Digraph('NFA', filename='Reports/Images/nfa_g.gv', format='png')
+    graph.attr('node', shape='circle')
+    graph.attr('edge', arrowhead='normal')
+    for (state, symbol, next_state) in transitions:
+        graph.edge(str(state), str(next_state), label=symbol)
+
+    for final in final_states:
+        graph.node(str(final), shape='doublecircle')
+    graph.view()
+
 
 main()

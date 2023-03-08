@@ -43,6 +43,8 @@ def main():
     gram = GrammarC(VN, VT, Productions, F_)
     print(gram.identify_grammar_type())  # The output will be Regular Grammar
 
+    gramm_from_fa = FA.to_grammar() # The output will be object of type Grammar, created from FA
+
     # lAB 1
     # print(gg.generate())
     # FA = finite_automaton.FiniteAutomaton(Transitions, F, Q, E)

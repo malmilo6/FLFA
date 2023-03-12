@@ -35,6 +35,15 @@ def main():
         ('q2', 'a', 'q4')
     ]
 
+    test_tran = [
+        ['', 'a', '', '', ''],
+        ['', 'b', 'b', '', ''],
+        ['', '', '', 'b', 'a'],
+        ['', 'a', '', '', ''],
+        ['', '', '', '', '']
+    ]
+
+
     FA = FiniteAutomaton(Q, E, S, Transitions, F)
     print(FA.FA_type())  # The output will be NFA
     FAD = FA.nfa_to_dfa()

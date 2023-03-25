@@ -1,0 +1,2 @@
+var name = 15;
+print name

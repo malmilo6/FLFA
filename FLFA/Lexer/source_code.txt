@@ -1,2 +1,2 @@
-var name = 15;
-print name
+var number = 15;
+print number;

@@ -1,7 +1,6 @@
 # Topic: Lexer
 ## Course: Formal Languages & Finite Automata
 ### Author: Cernetchi Maxim
-____
 ## Theory 
 <p>
 Lexical analysis, also known as tokenization, is the process of analyzing and breaking down a sequence of characters (source code) into a series of meaningful tokens (lexical units). This is the first step in the compilation process of computer programs, where the source code is translated into machine-readable code.

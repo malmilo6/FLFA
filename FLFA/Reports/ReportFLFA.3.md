@@ -30,7 +30,7 @@ The Lexer class is initialized with the source code, which is then tokenized by 
         tokens = []
 
         # Splitting the source code into "tokens"
-        source_code = self.source_code.split()
+        source_code = self.source_code.split();
 ```
 If the token is "var", it is recognized as a variable declaration and added to the list of tokens. If the token is a digit, it is recognized as an integer, and if it ends with a semicolon, it is added to the list of tokens as an INTEGER token with the semicolon removed. If the token is a word, it is recognized as an identifier and added to the list of tokens. If it ends with a semicolon, it is added to the list of tokens as an IDENTIFIER token with the semicolon removed. If the token is one of the supported operators (+, -, =, *, /), it is recognized as an operator and added to the list of tokens. If the token ends with a semicolon, it is recognized as a separator and added to the list of tokens.
 ``` 

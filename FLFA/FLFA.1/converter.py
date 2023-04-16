@@ -124,29 +124,37 @@ class Converter:
     def to_cnf(self, variables, terminals, productions):
         new_productions = []
         next_new_var = 1
-        terminal_var_map = {}
-        prod_var_map = {}
+        terminal_var_map = {}  # Map of terminal symbols to their corresponding variable names
+        prod_var_map = {}  # Map of production rules to their corresponding variable names
 
+        # Iterate through each production rule
         for var, prod in productions:
+            # If the production has a length greater than or equal to 3
             if len(prod) >= 3:
+                # If the production is not in the prod_var_map
                 if prod not in prod_var_map:
-                    prod_vars = [f"X{next_new_var + i}" for i in range(len(prod) - 2)]
-                    next_new_var += len(prod) - 2
+                    # Create new variable names for the production
+                    prod_vars = [f"X{next_new_var + i}" for i in range(len(prod) - 1)]
+                    next_new_var += len(prod) - 1
                     variables.update(prod_vars)
                     prod_var_map[prod] = prod_vars
 
                 prod_vars = prod_var_map[prod]
 
+                # Add new production rules for each pair of symbols in the production
                 new_productions.append((var, prod[0] + prod_vars[0]))
-                for i in range(len(prod) - 3):
+                for i in range(len(prod) - 2):
                     new_productions.append((prod_vars[i], prod[i + 1] + prod_vars[i + 1]))
-                new_productions.append((prod_vars[-1], prod[-2:]))
+                new_productions.append((prod_vars[-1], prod[-1]))
 
+            # If the production has a length of 2 and both symbols are variables
             elif len(prod) == 2 and all(sym in variables for sym in prod):
                 new_productions.append((var, prod))
 
+            # If the production has a length of 2 and at least one symbol is a terminal
             else:
                 new_prod = prod
+                # Replace terminal symbols with their corresponding variable names
                 for sym in prod:
                     if sym in terminals:
                         if sym not in terminal_var_map:
@@ -158,6 +166,8 @@ class Converter:
                         new_prod = new_prod.replace(sym, terminal_var_map[sym], 1)
                 new_productions.append((var, new_prod))
 
+        # Remove duplicate production rules
+        new_productions = list(set(new_productions))
         return variables, terminals, new_productions
 
     def cfg_to_cnf(self):

@@ -7,26 +7,11 @@ from converter import Converter
 
 def main():
     # Variant 6
-    variables = {'S', 'A', 'B', 'C', 'D'}
-    terminals = {'a', 'b', 'd'}
-    productions = [
-        ('S', 'dB'),
-        ("S", 'AC'),
-        ("A", "d"),
-        ("A", "dS"),
-        ("A", "aBdB"),
-        ("B", "a"),
-        ("B", "aA"),
-        ("B", "AC"),
-        ("C", "bC"),
-        ("C", 'ε'),
-        ("D", "ab")
-    ]
 
-    # variables = {"S", "A", "B", "D", 'C'}
-    # terminals = {"a", "b"}
-    # productions = [("S", "a"), ("S", "aD"), ("D", "aD"), ("S", "aA"), ("S", "B"),
-    #                ("A", "aBB"), ("A", "ε"), ("B", "Aa"), ("B", "b"), ("C", "aC")]
+    variables = {"S", "A", "B", "C", "E"}
+    terminals = {"a", "b"}
+    productions = [("S", "aB"), ("S", "AC"), ("A", "a"), ("A", "ASC"), ("A", "BC"),
+                   ("B", "b"), ("C", "ε"), ("B", "bS"), ("E", "bB"), ("C", "BA")]
     C = Converter(variables, terminals, productions)
     C.cfg_to_cnf()
     C.print_cnf_productions()

@@ -48,23 +48,23 @@ To convert a context-free grammar (CFG) to Chomsky Normal Form (CNF), follow the
 ## Implementation description
 There is an all-purpose class Converter which converts every given CFG to CNF. Here is short description for each method used:
 
-**remove_inaccessible_symbols:** Eliminates variables and productions that cannot be reached from the start symbol. This helps simplify the grammar by removing unused variables and productions.
+**_remove_inaccessible_symbols_**: Eliminates variables and productions that cannot be reached from the start symbol. This helps simplify the grammar by removing unused variables and productions.
 
-**remove_epsilon_productions:** Removes ε-productions (productions that generate an empty string) by replacing nullable variables in other productions and updating the grammar accordingly. This step is necessary to convert the grammar into CNF.
+**_remove_epsilon_productions_:** Removes ε-productions (productions that generate an empty string) by replacing nullable variables in other productions and updating the grammar accordingly. This step is necessary to convert the grammar into CNF.
 
-**remove_nonproductive_symbols:** Removes nonproductive variables and their productions. Nonproductive variables are those that cannot generate terminal strings. This step simplifies the grammar by removing variables that do not contribute to valid derivations.
+**_remove_nonproductive_symbols_:** Removes nonproductive variables and their productions. Nonproductive variables are those that cannot generate terminal strings. This step simplifies the grammar by removing variables that do not contribute to valid derivations.
 
-**remove_unit_productions:** Eliminates unit productions (productions with a single variable on the right side) by replacing them with equivalent non-unit productions. This step ensures that the grammar only contains CNF-compliant productions.
+**_remove_unit_productions_:** Eliminates unit productions (productions with a single variable on the right side) by replacing them with equivalent non-unit productions. This step ensures that the grammar only contains CNF-compliant productions.
 
-**to_cnf:** Converts the remaining productions to Chomsky Normal Form by replacing terminals in mixed productions with new variables and breaking long productions into binary productions using new variables. This step transforms the grammar into its final CNF representation.
+**_to_cnf_:** Converts the remaining productions to Chomsky Normal Form by replacing terminals in mixed productions with new variables and breaking long productions into binary productions using new variables. This step transforms the grammar into its final CNF representation.
 
-**cfg_to_cnf:** Executes the transformation process by calling the aforementioned methods in the appropriate order, converting the original CFG into CNF.
+**_cfg_to_cnf_:** Executes the transformation process by calling the aforementioned methods in the appropriate order, converting the original CFG into CNF.
 
-**print_cnf_productions**: Prints the resulting CNF grammar's variables, terminals, and productions in a human-readable format.
+**_print_cnf_productions_**: Prints the resulting CNF grammar's variables, terminals, and productions in a human-readable format.
 
 Further explanation for written code is provided in the file itself in the form of comments.
 ## Unit tests
-**unittest** is a built-in Python library used for writing and executing unit tests. It provides a testing framework that allows developers to create test cases, automate test execution, and report test results. Unit tests are essential for ensuring that your code behaves as expected and maintains stability as you make changes to your application.
+**_unittest_** is a built-in Python library used for writing and executing unit tests. It provides a testing framework that allows developers to create test cases, automate test execution, and report test results. Unit tests are essential for ensuring that your code behaves as expected and maintains stability as you make changes to your application.
 
 For the given requirement I wrote one test for each method.
 There is an example for one of the methods:

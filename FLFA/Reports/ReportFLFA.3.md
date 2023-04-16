@@ -69,4 +69,3 @@ In conclusion, lexical analysis is an important step in the compilation process 
 The given code is a simple lexer written in Python, which tokenizes the source code by using regular expressions and conditional statements. It recognizes different types of tokens such as variable declarations, integers, identifiers, operators, and separators. However, it is important to note that this implementation is limited in its ability to handle a wide range of input and is not robust enough for practical use.
 
 Overall, this implementation provides a useful starting point for understanding the basics of lexical analysis and can be built upon to create more sophisticated lexers for handling real-world programming languages.
-____

@@ -63,6 +63,22 @@ There is an all-purpose class Converter which converts every given CFG to CNF. H
 **_print_cnf_productions_**: Prints the resulting CNF grammar's variables, terminals, and productions in a human-readable format.
 
 Further explanation for written code is provided in the file itself in the form of comments.
+## Results
+For the given variant Chomsky Normal Form is:
+```
+Variables: {'S', 'C', 'B', 'X3', 'T1', 'X2', 'A', 'T4'}
+Terminals: {'b', 'a'}
+Productions:
+C -> BA
+S -> AS | AX2 | T1 | T1B | AC | BC
+A -> BC | AS | AX2 | T4S | T1 | T4
+B -> T4S | T4
+T4 -> b
+T1 -> a
+X2 -> SX3
+X3 -> C
+
+```
 ## Unit tests
 **_unittest_** is a built-in Python library used for writing and executing unit tests. It provides a testing framework that allows developers to create test cases, automate test execution, and report test results. Unit tests are essential for ensuring that your code behaves as expected and maintains stability as you make changes to your application.
 

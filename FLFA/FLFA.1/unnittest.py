@@ -93,7 +93,7 @@ class TestConverter(unittest.TestCase):
 
         # Define expected result
         expected_productions = [('B', 'AT1'), ('S', 'T1'), ('T2', 'b'), ('X3', 'BX4'), ('S', 'T1A'), ('X4', 'B'),
-                                ('B', 'T2'), ('S', 'AT1'), ('B', 'T1'), ('A', 'aX3'), ('T1', 'a'), ('S', 'T2')]
+                                ('B', 'T2'), ('S', 'AT1'), ('B', 'T1'), ('A', 'T1X3'), ('T1', 'a'), ('S', 'T2')]
         expected_variables = {'X4', 'T1', 'T2', 'X3', 'A', 'S', 'B'}
 
         # Check if the new productions and variables are equal to the expected result

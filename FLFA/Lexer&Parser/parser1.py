@@ -1,3 +1,6 @@
+from ast import Identifier, Operator, Integer, String, VariableDeclaration
+
+
 class Parser(object):
 
     def __init__(self, tokens):
@@ -5,55 +8,59 @@ class Parser(object):
         self.token_index = 0
 
     def parse(self):
+        ast_nodes = []
+
         while self.token_index < len(self.tokens):
             token_type = self.tokens[self.token_index][0]
             token_value = self.tokens[self.token_index][1]
 
-            # Trigger var declaration
             if token_type == 'DECLARATION' and token_value == 'var':
-                self.parse_var_declaration(self.tokens[self.token_index:len(self.tokens)])
-            # Increment token index
+                var_decl_node = self.parse_var_declaration(
+                    self.tokens[self.token_index:len(self.tokens)])
+                ast_nodes.append(var_decl_node)
+
             self.token_index += 1
 
-    def parse_var_declaration(self, tokens):
+        return ast_nodes
 
+    def parse_var_declaration(self, tokens):
         tokens_verified = 0
+        identifier = None
+        operator = None
+        value = None
 
         for token in range(0, len(tokens)):
 
             token_type = tokens[tokens_verified][0]
             token_value = tokens[tokens_verified][1]
 
-            # Get var type
             if token == 0:
-                print('Variable type: ' + token_value)
+                pass  # Ignore variable type, since it's not needed in the AST
 
-            # Get variable name
             elif token == 1 and token_type == 'IDENTIFIER':
-                print('Var name: ' + token_value)
+                identifier = Identifier(token_value)
             elif token == 1 and token_type != 'IDENTIFIER':
-                print('Error: Invalid variable name: ' + token_value)
-                quit()
+                raise ValueError('Error: Invalid variable name: ' + token_value)
 
-            # Get assignment operator
             elif token == 2 and token_type == 'OPERATOR':
-                print('Assign operator: ' + token_value)
+                operator = Operator(token_value)
             elif token == 2 and token_type != 'OPERATOR':
-                print('Error: Invalid assign operator ')
-                quit()
+                raise ValueError('Error: Invalid assign operator ')
 
-            # Get variable value
             elif token == 3 and token_type in ['IDENTIFIER', 'INTEGER', 'STRING']:
-                print('Var value: ' + token_value)
-            elif token == 3 and token_type not in ['IDENTIFIER', 'INTEGER', 'STRING']:
-                print('Invalid var assign value' + token_value)
-                quit()
+                if token_type == 'INTEGER':
+                    value = Integer(token_value)
+                elif token_type == 'IDENTIFIER':
+                    value = Identifier(token_value)
+                elif token_type == 'STRING':
+                    value = String(token_value)
 
-            # Get end of statement
             elif token == 4 and token_type == 'SEPARATOR':
-                print('End of declaration: ' + token_value)
-            elif token == 4 and token_type != 'SEPARATOR':
-                print("Error: End of declaration statement expected ';'")
-                quit()
+                pass  # Ignore the separator, since it's not needed in the AST
 
             tokens_verified += 1
+
+        variable_declaration = VariableDeclaration(identifier, value)
+        self.token_index += tokens_verified
+
+        return variable_declaration
